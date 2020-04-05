@@ -25,4 +25,51 @@ query storeConfigData($storeId: Int, $currency: String) {
         secure_base_static_url
         secure_base_media_url
     }
+    simiRootCate {
+        id
+        name
+        product_count
+        path
+      	position
+        children {
+            id
+            name
+            level
+            url_key
+            url_path
+            path
+            include_in_menu
+      	    position
+            children {
+                id
+                name
+                level
+                url_key
+                url_path
+                path
+                include_in_menu
+      			position
+                children {
+                    id
+                    name
+                    level
+                    url_key
+                    url_path
+                    path
+                    include_in_menu
+      				position
+                    children {
+                        id
+                        name
+                        level
+                        url_key
+                        url_path
+                        path
+                        include_in_menu
+      					position
+                    }
+                }
+            }
+        }
+    }
 }

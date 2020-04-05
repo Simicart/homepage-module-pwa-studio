@@ -7,6 +7,8 @@ import Footer from '../Footer';
 import Header from '@magento/venia-ui/lib/components/Header';
 import defaultClasses from './main.css';
 
+import HeaderNavigation from '../HeaderNavigation/HeaderNavigation';
+
 const Main = props => {
     const { children, isMasked } = props;
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -19,6 +21,7 @@ const Main = props => {
     return (
         <main className={rootClass}>
             <Header />
+            {window.innerWidth >= 1024 && <HeaderNavigation />}
             <div className={pageClass}>{children}</div>
             <Footer />
         </main>
