@@ -1,5 +1,5 @@
 #import "./Fragments/SimiPrice"
-query category($id: Int!, $currentPage: Int, $pageSize: Int, $stringId: String, $sort: ProductSortInput, $simiFilter: String) {
+query category($id: Int!, $currentPage: Int, $pageSize: Int, $stringId: String, $sort: ProductSortInput, $simiFilter: String, $simiProductSort:SimiProductSort) {
     category(id: $id) {
         product_count
             description
@@ -17,20 +17,8 @@ query category($id: Int!, $currentPage: Int, $pageSize: Int, $stringId: String, 
         meta_description
         __typename
     }
-    simiproducts(pageSize: $pageSize, currentPage: $currentPage, filter: {category_id: {eq: $stringId}}, sort: $sort, simiFilter: $simiFilter) {
+    simiproducts(pageSize: $pageSize, currentPage: $currentPage, filter: {category_id: {eq: $stringId}}, sort: $sort, simiFilter: $simiFilter, simiProductSort:$simiProductSort) {
         total_count
-        filters {
-            name
-            filter_items_count
-            request_var
-            filter_items_count
-            filter_items {
-                label
-                value_string
-                __typename
-            }
-            __typename
-        }
         simi_filters {
             name
             filter_items_count
@@ -39,6 +27,7 @@ query category($id: Int!, $currentPage: Int, $pageSize: Int, $stringId: String, 
             filter_items {
                 label
                 value_string
+                items_count
                 __typename
             }
             __typename
@@ -77,16 +66,15 @@ query category($id: Int!, $currentPage: Int, $pageSize: Int, $stringId: String, 
             price {
                 ... SimiPrice
             }
+            simiExtraField
             __typename
         }
         page_info {
             total_pages
         }
         total_count
-        simiProductListItemExtraField {
-            sku
-            extraData
-        }
+        minPrice
+        maxPrice
         __typename
     }
 }
