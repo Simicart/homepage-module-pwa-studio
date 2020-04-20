@@ -70,3 +70,15 @@ export const saveDataToUrl = (url, data, is_dummy_data = true) => {
         Identify.storeDataToStoreage(Identify.SESSION_STOREAGE, 'LOCAL_URL_DICT', localUrlDict);
     }
 }
+
+export const saveCategoriesToDict = (category) => {
+    if (category) {
+        if (category.children && Array.isArray(category.children) && category.children.length) {
+            category.children.forEach(childCat => {
+                saveCategoriesToDict(childCat)
+            })
+        }
+        if (category.url_path)
+            saveDataToUrl('/' + category.url_path + cateUrlSuffix(), {id: category.id,name: category.name})
+    }
+}

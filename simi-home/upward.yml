@@ -17,3 +17,31 @@
 status: veniaResponse.status
 headers: veniaResponse.headers
 body: veniaResponse.body
+
+# The categoryResult object is a ServiceResolver that returns data from a
+# GraphQL backing service, whose URL is resolved in the top-level 'magentoGQL'
+# object.
+#
+# This object retrieves information about a specific category.
+categoryResult:
+  url: magentoGQL
+  query: './src/simi/Queries/getCategory.graphql'
+  variables:
+    inline:
+      onServer: true
+      id: urlResolver.id
+      pageSize:
+        inline: 1
+      currentPage:
+        inline: 1
+
+# The static directory includes files which don't need to be compiled.
+# They are served by the `veniaStatic` DirectoryResolver, along with the
+# bundles and other assets, but since that resolver serves the `.` dist
+# directory, the UpwardIncludePlugin will not copy it to avoid circular
+# dependency. TODO: This is kind of confusing.
+veniaStaticIncludes:
+  resolver: directory
+  directory:
+      resolver: inline
+      inline: './static'

@@ -15,6 +15,8 @@ const ProductItem = props => {
         stringId: String(dataProduct.category_id)
     }});
 
+    console.log(data);
+
     const handleAction = (location) => {
         history.push(location);
     }

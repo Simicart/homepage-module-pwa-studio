@@ -4,25 +4,18 @@ import { useFooter } from '../../simi/BaseComponents/Footer/useFooter';
 
 import { mergeClasses } from '../../classify';
 import defaultClasses from './footer.css';
-import GET_STORE_CONFIG_DATA from '../../simi/Queries/getStoreConfigData.graphql';
 import Identify from '../../simi/Helper/Identify';
 
 const Footer = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
 
-    const talonProps = useFooter({
-        query: GET_STORE_CONFIG_DATA
-    });
-    const { data } = talonProps;
-
+    const storeConfigData = Identify.getStoreConfig();
+    console.log(storeConfigData);
     let copyrightText = '';
-    if (data && data.storeConfig) {
-        Identify.saveStoreConfig(data)
-
-        if(data.storeConfig.copyright) {
-            copyrightText = data.storeConfig.copyright;
-        }
+    if (storeConfigData && storeConfigData.storeConfig && storeConfigData.storeConfig.copyright) {
+        copyrightText = storeConfigData.storeConfig.copyright;
     }
+    console.log(copyrightText);
 
     let copyright = null;
     if (copyrightText) {
