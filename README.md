@@ -1,7 +1,16 @@
-# homepage-module-pwa-studio
-Homepage Module for Magento PWA Studio
+!["SimiCart Logo"](https://www.simicart.com//skin/frontend/default/simicart2.1/images/simicart/new_logo_small.png)
+# Homepage Module for Magento PWA Studio
+This module helps you customize your homepage based on Venia theme of Magento PWA Studio. The configurable components include:
+1. Main Menu
+2. Banner Slider
+3. Category Blocks
+4. Product Grids
 
-## 1. Clone pwa-studio
+!["Homepage Module Layout"](https://www.simicart.com/blog/wp-content/uploads/simicart-homepage-module-full-homepage-01-1024x1179.png)
+
+## Installation
+
+### 1. Clone pwa-studio
 ```
 git clone https://github.com/magento-research/pwa-studio/
 cd pwa-studio
@@ -9,7 +18,7 @@ git checkout release/5.0
 cp packages/venia-concept/.env.dist packages/venia-concept/.env
 ```
 
-## 2. Modify package.json
+### 2. Modify package.json
 
 workspaces:
 ```
@@ -34,7 +43,7 @@ scripts:
   },
 ```
 
-## 3. Clone simi-home
+### 3. Clone simi-home
 ```
 cd  packages
 git clone https://github.com/Simicart/homepage-module-pwa-studio
@@ -43,7 +52,7 @@ yarn install
 yarn run build
 ```
 
-## 4. Run watch/stage
+### 4. Run watch/stage
 To run watch
 ```
 yarn run watch:simihome
