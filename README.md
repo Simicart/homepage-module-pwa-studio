@@ -14,7 +14,7 @@ This module helps you customize your homepage based on Venia theme of Magento PW
 ```
 git clone https://github.com/magento-research/pwa-studio/
 cd pwa-studio
-git checkout release/5.0
+git checkout release/6.0.1
 cp packages/venia-concept/.env.dist packages/venia-concept/.env
 ```
 
@@ -47,7 +47,11 @@ scripts:
 ```
 cd  packages
 git clone https://github.com/Simicart/homepage-module-pwa-studio
-cd ..
+mv homepage-module-pwa-studio/simi-home ./
+cd simi-home
+yarn install
+yarn run build
+cd ../..
 yarn install
 yarn run build
 ```
